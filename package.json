@@ -1,0 +1,89 @@
+{
+  "name": "react-kentico-blog",
+  "version": "0.0.1-pre",
+  "description": "",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.config.example.js --mode development --open --hot",
+    "build": "webpack --mode production",
+    "build-example": "webpack --config webpack.config.example.js --mode production",
+    "test": "jest"
+  },
+  "author": "Maciej Sopyło <maciek134@gmail.com>",
+  "contributors": [
+    "Michał Szmyt <michalszmyt95@gmail.com>"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/enzyme": "^3.9.1",
+    "@types/jest": "^24.0.11",
+    "@types/react": "^16.8.13",
+    "@types/react-dom": "^16.8.3",
+    "@types/react-router-dom": "^4.3.1",
+    "awesome-typescript-loader": "^5.2.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": ">=1",
+    "jest": "^24.7.1",
+    "kentico-cloud-core": "^1.4.5",
+    "lint-staged": ">=8",
+    "prettier": "^1.17.0",
+    "react-router-dom": "^5.0.0",
+    "react-test-renderer": "^16.8.6",
+    "source-map-loader": "^0.2.4",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.15.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^4.0.0",
+    "tslint-react-hooks": "^2.0.0",
+    "typescript": "^3.4.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "kentico-cloud-delivery": "^5.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "rxjs": "^6.4.0"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testRegex": "\\.spec\\.(ts|tsx)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "moduleNameMapper": {
+      "^react-kentico-blog$": "<rootDir>/src/index.ts"
+    },
+    "setupFiles": [
+      "<rootDir>/test.setup.ts"
+    ],
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.{ts,tsx}"
+    ]
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "quoteProps": "consistent",
+    "jsxBracketSameLine": true,
+    "endOfLine": "lf",
+    "printWidth": 100
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,css,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}

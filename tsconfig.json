@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "module": "commonjs",
+    "target": "es6",
+    "lib": ["es2015", "es2017", "dom"],
+    "esModuleInterop": true,
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
+    "allowJs": false,
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "paths": {
+      "@example/*": ["./example/*"],
+      "react-kentico-blog": ["./src/index.ts"]
+    }
+  }
+}
