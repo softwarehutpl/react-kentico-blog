@@ -1,12 +1,16 @@
 {
   "name": "react-kentico-blog",
   "version": "0.0.2",
-  "description": "",
+  "description": "A React library that makes it easy to create a blog using Kentico Cloud",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.example.js --mode development --open --hot",
     "build": "webpack --mode production",
     "build-example": "webpack --config webpack.config.example.js --mode production",
     "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/softwarehutpl/react-kentico-blog"
   },
   "author": "Maciej Sopyło <maciek134@gmail.com>",
   "contributors": [
