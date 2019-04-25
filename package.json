@@ -1,6 +1,6 @@
 {
   "name": "react-kentico-blog",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A React library that makes it easy to create a blog using Kentico Cloud",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.example.js --mode development --open --hot",
