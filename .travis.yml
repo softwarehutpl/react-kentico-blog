@@ -2,7 +2,9 @@ language: node_js
 node_js:
   - '10'
 cache: yarn
-scripts:
+before_install:
   - npm install -g codecov
 after_success:
   - codecov
+script:
+  - yarn test --coverage
