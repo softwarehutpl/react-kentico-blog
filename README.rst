@@ -22,3 +22,12 @@ react-kentico-blog
 .. image:: https://readthedocs.org/projects/react-kentico-blog/badge/?style=flat-square
    :target: https://react-kentico-blog.readthedocs.io/en/latest
 
+A React library making it super easy to create a blog with `Kentico Cloud CMS <https://kenticocloud.com/>`_.
+
+Installation
+------------
+:code:`$ yarn add react-kentico-blog rxjs kentico-cloud-delivery`
+
+Contributing
+------------
+Contributions are welcome! Feel free to create a PR. You can find details about our contributing guidelines `here <https://github.com/softwarehutpl/react-kentico-blog/blob/master/CONTRIBUTING.rst>`_.
