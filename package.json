@@ -32,6 +32,8 @@
     "kentico-cloud-core": "^1.4.5",
     "lint-staged": ">=8",
     "prettier": "^1.17.0",
+    "react": ">= 16.8.6 < 17",
+    "react-dom": ">= 16.8.6 < 17",
     "react-router-dom": "^5.0.0",
     "react-test-renderer": "^16.8.6",
     "source-map-loader": "^0.2.4",
@@ -47,9 +49,11 @@
   },
   "dependencies": {
     "kentico-cloud-delivery": "^5.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
     "rxjs": "^6.4.0"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.6 < 17",
+    "react-dom": ">= 16.8.6 < 17"
   },
   "jest": {
     "transform": {
