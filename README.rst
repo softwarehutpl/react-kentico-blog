@@ -29,7 +29,11 @@ A collection of React hooks that make it super easy to create a blog with `Kenti
 
 Installation
 ------------
-:code:`$ yarn add react-kentico-blog rxjs kentico-cloud-delivery`
+:code:`$ npm install react-kentico-blog`
+
+Documentation
+-------------
+Our documentation is hosted on Read the Docs, `here <https://react-kentico-blog.readthedocs.io/en/latest/>`_.
 
 Contributing
 ------------
