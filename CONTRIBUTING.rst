@@ -10,6 +10,10 @@ along with `husky <https://github.com/typicode/husky>`_ so you shouldn't have to
 worry about styling anything, but it may be helpful to install
 an extension for your IDE that will format the files automatically.
 
+Commits
+-------
+We use `Semantic Commit Messages <https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716>`_ and you should too!
+It makes it much easier to see what happened in the repository.
 
 Testing
 -------
@@ -20,7 +24,7 @@ Test coverage must be kept at 100% - any coverage exceptions must be properly ex
      ...
      /* istanbul ignore next: would test React */
      return () => subscription.unsubscribe();
-   })
+   });
 
 Before submitting a pull request please make sure all tests are green and coverage is still at 100%.
 
