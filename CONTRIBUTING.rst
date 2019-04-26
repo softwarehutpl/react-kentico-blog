@@ -15,6 +15,10 @@ Commits
 We use `Semantic Commit Messages <https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716>`_ and you should too!
 It makes it much easier to see what happened in the repository.
 
+`DCO <https://developercertificate.org>`_ is used to assert that authors are legally authorized
+to make the contributions - this is done by signing-off every commit - either manually or using the `-s` switch from CLI.
+**You have to use your real name in the sign-off, because DCO is a legally binding document.**
+
 Testing
 -------
 Tests are written in Jest/Enzyme and the library is developed using TDD - we strongly recommend you to do the same.
@@ -33,5 +37,8 @@ Documentation
 Documentation is created using `Sphinx <http://sphinx-doc.org/>`_ and hosted on `Read the Docs <https://readthedocs.org/>`_.
 Please try to keep the documentation consistent with the changes you make.
 
+Governance model
+----------------
+Since the project is pretty small the main maintainer makes all final decisions.
 
 Above all else use common sense and if you have any doubts feel free to ask.
