@@ -12,9 +12,12 @@
     "allowJs": false,
     "resolveJsonModule": true,
     "baseUrl": "./",
+    "declaration": true,
     "paths": {
       "@example/*": ["./example/*"],
       "react-kentico-blog": ["./src/index.ts"]
-    }
-  }
+    },
+    "outDir": "./dist"
+  },
+  "include": ["./src/**/*"]
 }
