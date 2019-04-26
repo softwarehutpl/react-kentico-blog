@@ -6,7 +6,8 @@
     "start": "webpack-dev-server --config webpack.config.example.js --mode development --open --hot",
     "build": "webpack --mode production",
     "build-example": "webpack --config webpack.config.example.js --mode production",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -73,7 +74,15 @@
     ],
     "collectCoverageFrom": [
       "<rootDir>/src/**/*.{ts,tsx}"
-    ]
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
   },
   "prettier": {
     "trailingComma": "es5",
