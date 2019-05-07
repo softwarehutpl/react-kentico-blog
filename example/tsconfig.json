@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@example/*": ["./*"],
+      "react-kentico-blog": ["../src/index.ts"]
+    }
+  },
+  "include": ["./**/*"]
+}
