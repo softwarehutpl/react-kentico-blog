@@ -50,3 +50,7 @@ export function mountContextHook(hookCb) {
 export function lastCallArg(fn: jest.Mock, n: number): any {
   return fn.mock.calls[fn.mock.calls.length - 1][n];
 }
+
+export function lastHTTPUrl(httpService: MockHTTPService): string {
+  return lastCallArg(httpService.get, 0).url;
+}

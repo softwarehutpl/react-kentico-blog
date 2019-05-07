@@ -64,7 +64,7 @@ describe('useList', () => {
     expect(httpService.get).toHaveBeenCalled();
 
     const fetchedUrl = lastCallArg(httpService.get, 0).url;
-    expect(fetchedUrl).toMatch(`order=${options.orderBy}[${options.sort}]`);
+    expect(fetchedUrl).toMatch(`order=elements.${options.orderBy}[${options.sort}]`);
     expect(fetchedUrl).toMatch(`depth=${options.depth}`);
   });
 
@@ -78,7 +78,47 @@ describe('useList', () => {
     expect(httpService.get).toHaveBeenCalled();
 
     const fetchedUrl = lastCallArg(httpService.get, 0).url;
-    expect(fetchedUrl).toMatch(`order=${options.orderBy}[${SortOrder.asc}]`);
+    expect(fetchedUrl).toMatch(`order=elements.${options.orderBy}[${SortOrder.asc}]`);
+  });
+
+  it('supports filtering', () => {
+    const modelName = 'test';
+    const options = {
+      filter: {
+        testField: '1234',
+        testField2: {
+          contains: 'asdf',
+        },
+        testImpossible: {
+          any: ['test1', 'test2'],
+          all: ['test1', 'test2'],
+          in: ['abc'],
+          gt: '1',
+          gte: '2',
+          lt: '3',
+          lte: '4',
+          range: { from: 1, to: 5 },
+        },
+      },
+    };
+    const { httpService } = mountContextHook(() => useList(modelName, options));
+
+    expect(httpService.get).toHaveBeenCalled();
+
+    const fetchedUrl = lastCallArg(httpService.get, 0).url;
+    expect(fetchedUrl).toMatch(`elements.testField=${options.filter.testField}`);
+    expect(fetchedUrl).toMatch(
+      `elements.testField2[contains]=${options.filter.testField2.contains}`
+    );
+    for (let [filter, value] of Object.entries(options.filter.testImpossible)) {
+      if (filter === 'range') {
+        expect(fetchedUrl).toMatch(
+          `elements.testImpossible[range]=${(value as any).from},${(value as any).to}`
+        );
+      } else {
+        expect(fetchedUrl).toMatch(`elements.testImpossible[${filter}]=${value}`);
+      }
+    }
   });
 });
 
