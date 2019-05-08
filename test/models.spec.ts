@@ -8,8 +8,8 @@ describe('models', () => {
       post.images = new Fields.AssetsField('images', [
         new FieldModels.AssetModel('', '', 0, '', 'test-url'),
       ]);
-
-      expect(post.image).toBe(post.images.value[0]);
+      // @ts-ignore
+      expect(post.image).toBe(post?.images?.value[0]);
     });
   });
 });

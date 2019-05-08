@@ -24,6 +24,9 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: 'awesome-typescript-loader',
+        options: {
+          compiler: 'ttypescript',
+        },
       },
     ],
   },

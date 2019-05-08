@@ -17,7 +17,8 @@
       "@example/*": ["./example/*"],
       "react-kentico-blog": ["./src/index.ts"]
     },
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "plugins": [{ "transform": "./src/optchain.transform.ts" }]
   },
   "include": ["./src/**/*"]
 }

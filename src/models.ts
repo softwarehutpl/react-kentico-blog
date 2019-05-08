@@ -7,6 +7,6 @@ export class Post extends ContentItem {
   images: Fields.AssetsField;
 
   get image(): FieldModels.AssetModel {
-    return this.images.value[0];
+    return this.images?.value[0]?.()?.x;
   }
 }

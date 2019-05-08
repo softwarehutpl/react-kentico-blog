@@ -5,7 +5,8 @@
     "paths": {
       "@example/*": ["./*"],
       "react-kentico-blog": ["../src/index.ts"]
-    }
+    },
+    "plugins": [{ "transform": "../src/optchain.transform.ts" }]
   },
   "include": ["./**/*"]
 }
