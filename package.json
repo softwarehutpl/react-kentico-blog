@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "description": "A React library that makes it easy to create a blog using Kentico Cloud",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.example.js --mode development --open --hot",
+    "start": "webpack-dev-server --progress --config webpack.config.example.js --mode development --open --hot",
     "build": "tsc",
     "build-example": "webpack --config webpack.config.example.js --mode production",
     "test": "jest",

@@ -5,6 +5,7 @@ export class Post extends ContentItem {
   title: Fields.TextField;
   content: Fields.RichTextField;
   images: Fields.AssetsField;
+  post_date: Fields.DateTimeField;
 
   get image(): FieldModels.AssetModel {
     return this.images.value[0];

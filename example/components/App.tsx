@@ -8,6 +8,7 @@ import { projectId } from '@example/config';
 import { LowLevelList } from '@example/components/LowLevel.List';
 import { LowLevelSingle } from '@example/components/LowLevel.Single';
 import { HighLevelSingle } from './HighLevel.Single';
+import { HighLevelList } from './HighLevel.List';
 
 const client = new DeliveryClient({
   projectId,
@@ -39,6 +40,7 @@ export function App() {
         <Route path="/lowlevel/single" component={LowLevelSingle} />
         <Route path="/lowlevel/list" component={LowLevelList} />
         <Route path="/highlevel/single" component={HighLevelSingle} />
+        <Route path="/highlevel/list" component={HighLevelList} />
       </BrowserRouter>
     </BlogProvider>
   );
