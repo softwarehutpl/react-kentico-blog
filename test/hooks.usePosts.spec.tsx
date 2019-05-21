@@ -18,20 +18,6 @@ describe('usePosts', () => {
     expect(fetchedUrl).toMatch(`order=elements.post_date`);
   });
 
-  it('supports search', () => {
-    const options = {
-      search: 'test search',
-    };
-    const { httpService } = mountContextHook(() => usePosts(0, options));
-
-    expect(httpService.get).toHaveBeenCalled();
-
-    const fetchedUrl = lastHTTPUrl(httpService);
-    const searchTest = options.search.split(' ').join(',');
-    expect(fetchedUrl).toMatch(`content[contains]=${searchTest}`);
-    expect(fetchedUrl).toMatch(`title[contains]=${searchTest}`);
-  });
-
   it('supports sorting', () => {
     const options = {
       sort: SortOrder.desc,

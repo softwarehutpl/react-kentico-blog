@@ -3,6 +3,7 @@ import { useList, useSingle, Post } from 'react-kentico-blog';
 import { Container, Row, Col, Breadcrumb } from 'react-bootstrap';
 import { PostSingle } from '@example/components/PostSingle';
 import { PostList } from '@example/components/PostList';
+import { GHLink } from './GHLink';
 
 export function LowLevelList() {
   const [selected, setSelected] = useState<string>(null);
@@ -14,6 +15,7 @@ export function LowLevelList() {
       <Row>
         <Col>
           <Breadcrumb>
+            <GHLink filename="components/LowLevel.List.tsx" />
             <Breadcrumb.Item>Low Level</Breadcrumb.Item>
             <Breadcrumb.Item active>List</Breadcrumb.Item>
           </Breadcrumb>
