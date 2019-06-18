@@ -1,5 +1,6 @@
 import { ContentItem, DeliveryClient, SortOrder, MultipleItemQuery } from 'kentico-cloud-delivery';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
+import { shallowEqualObjects } from 'shallow-equal';
 
 import { BlogContext } from './BlogProvider';
 
@@ -29,6 +30,9 @@ interface FilterComplex {
 }
 
 type Filter = FilterComplex | string;
+interface Filters {
+  [k: string]: Filter;
+}
 
 interface ListOptions {
   depth?: number;
@@ -36,9 +40,7 @@ interface ListOptions {
   orderBy?: string;
   page?: number;
   pageSize?: number;
-  filter?: {
-    [k: string]: Filter;
-  };
+  filter?: Filters;
 }
 
 const listDefaults: ListOptions = {
@@ -66,8 +68,15 @@ function simpleFilter(
 export function useList<T extends ContentItem>(model: string, options: ListOptions = {}): T[] {
   const client = useKentico();
   const [list, setList] = useState<T[]>([]);
+  const filter = useRef<Filters>();
 
   useEffect(() => {
+    if (options.filter && shallowEqualObjects(filter.current, options.filter)) {
+      /* istanbul ignore next: FIXME - no easy way to test with current hook testing helper :( */
+      return;
+    }
+    filter.current = options.filter;
+
     const request = client.items<T>().type(model);
 
     if (options.depth) {

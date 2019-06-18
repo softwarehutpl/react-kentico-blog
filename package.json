@@ -56,7 +56,8 @@
   },
   "dependencies": {
     "kentico-cloud-delivery": "^5.7.2",
-    "rxjs": "^6.4.0"
+    "rxjs": "^6.4.0",
+    "shallow-equal": "^1.2.0"
   },
   "peerDependencies": {
     "react": ">= 16.8.6 < 17",
