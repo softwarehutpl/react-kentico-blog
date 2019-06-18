@@ -4,3 +4,4 @@ dist
 example/config.ts
 coverage
 _build
+yarn-error.log
