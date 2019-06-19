@@ -1,6 +1,6 @@
 import { ContentItem, DeliveryClient, SortOrder, MultipleItemQuery } from 'kentico-cloud-delivery';
 import { useContext, useEffect, useState, useRef } from 'react';
-import { shallowEqualObjects } from 'shallow-equal';
+import deepEqual from 'deep-equal';
 
 import { BlogContext } from './BlogProvider';
 
@@ -71,7 +71,7 @@ export function useList<T extends ContentItem>(model: string, options: ListOptio
   const filter = useRef<Filters>();
 
   useEffect(() => {
-    if (options.filter && shallowEqualObjects(filter.current, options.filter)) {
+    if (options.filter && deepEqual(filter.current, options.filter)) {
       /* istanbul ignore next: FIXME - no easy way to test with current hook testing helper :( */
       return;
     }
