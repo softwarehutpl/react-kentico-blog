@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { usePosts, usePost } from 'react-kentico-blog';
+import { usePosts, usePost, useCategories } from 'react-kentico-blog';
 import { Container, Row, Col, Breadcrumb, Button, FormControl } from 'react-bootstrap';
 import { PostSingle } from '@example/components/PostSingle';
 import { PostList } from '@example/components/PostList';
@@ -8,10 +8,14 @@ import { GHLink } from './GHLink';
 
 export function HighLevelList() {
   const [selected, setSelected] = useState<string>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>(null);
   const [sort, setSort] = useState<SortOrder>(SortOrder.asc);
   const [orderBy, setOrderBy] = useState<string>('post_date');
-  const posts = usePosts(0, { sort, orderBy });
+  const posts = usePosts(0, { sort, orderBy, category: selectedCategory });
   const post = usePost(selected);
+  const categories = useCategories();
+
+  const selectCategory = event => setSelectedCategory(event.target.value);
 
   return (
     <Container fluid>
@@ -55,6 +59,18 @@ export function HighLevelList() {
           </Button>
           &nbsp;
           <hr />
+        </Col>
+        <Col xs={4}>
+          <FormControl as="select" onChange={selectCategory}>
+            <option key="all" value="">
+              All
+            </option>
+            {categories.map(category => (
+              <option key={category.codename} value={category.codename}>
+                {category.name}
+              </option>
+            ))}
+          </FormControl>
         </Col>
       </Row>
       <Row>
