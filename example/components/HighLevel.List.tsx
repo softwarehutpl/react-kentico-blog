@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { usePosts, usePost, useCategories } from 'react-kentico-blog';
+import { usePosts, usePost, useCategories, useTaxonomies } from 'react-kentico-blog';
 import { Container, Row, Col, Breadcrumb, Button, FormControl } from 'react-bootstrap';
 import { PostSingle } from '@example/components/PostSingle';
 import { PostList } from '@example/components/PostList';
@@ -13,6 +13,7 @@ export function HighLevelList() {
   const [orderBy, setOrderBy] = useState<string>('post_date');
   const posts = usePosts(0, { sort, orderBy, category: selectedCategory });
   const post = usePost(selected);
+  const taxonomies = useTaxonomies();
   const categories = useCategories();
 
   const selectCategory = event => setSelectedCategory(event.target.value);

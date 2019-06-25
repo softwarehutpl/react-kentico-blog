@@ -1,7 +1,7 @@
 // tslint:disable:react-hooks-nesting
 
 import { DeliveryClient, SortOrder } from 'kentico-cloud-delivery';
-import { useKentico, useList, useSingle } from 'react-kentico-blog';
+import { useKentico, useList, useSingle, useTaxonomies, useTaxonomy } from 'react-kentico-blog';
 import { lastCallArg, mountContextHook } from './helper';
 
 describe('useKentico', () => {
@@ -137,5 +137,28 @@ describe('useSingle', () => {
     expect(fetchedUrl).toMatch(`system.type=${modelName}`);
     expect(fetchedUrl).toMatch(`elements.${options.filterBy}=${id}`);
     expect(fetchedUrl).toMatch('limit=1');
+  });
+});
+
+describe('useTaxonomies', () => {
+  it('queries a list of taxonomies', () => {
+    const { httpService } = mountContextHook(() => useTaxonomies());
+
+    expect(httpService.get).toHaveBeenCalled();
+
+    const fetchedUrl = lastCallArg(httpService.get, 0).url;
+    expect(fetchedUrl).toMatch(`/taxonomies`);
+  });
+});
+
+describe('useTaxonomy', () => {
+  it('queries a single taxonomy', () => {
+    const taxonomyCodename = 'test';
+    const { httpService } = mountContextHook(() => useTaxonomy(taxonomyCodename));
+
+    expect(httpService.get).toHaveBeenCalled();
+
+    const fetchedUrl = lastCallArg(httpService.get, 0).url;
+    expect(fetchedUrl).toMatch(`/taxonomies/${taxonomyCodename}`);
   });
 });

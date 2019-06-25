@@ -29,4 +29,16 @@ describe('usePosts', () => {
     const fetchedUrl = lastHTTPUrl(httpService);
     expect(fetchedUrl).toMatch(`order=elements.post_date[${options.sort}]`);
   });
+
+  it('supports filtering by category', () => {
+    const options = {
+      sort: SortOrder.desc,
+    };
+    const { httpService } = mountContextHook(() => usePosts(0, options));
+
+    expect(httpService.get).toHaveBeenCalled();
+
+    const fetchedUrl = lastHTTPUrl(httpService);
+    expect(fetchedUrl).toMatch(`order=elements.post_date[${options.sort}]`);
+  });
 });
