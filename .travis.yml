@@ -8,3 +8,5 @@ after_success:
   - codecov
 script:
   - yarn test --coverage
+notifications:
+webhooks: https://outlook.office.com/webhook/b634fd97-9bfc-4a05-bc4d-182cb59822a8@d05c317c-93fe-4715-8d77-f046589e2c20/TravisCI/c3bcc0ff93714850a13409c73e72502a/d7efd546-e461-4320-b28b-c454bfb3bddc
