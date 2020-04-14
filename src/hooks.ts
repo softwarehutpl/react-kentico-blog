@@ -1,6 +1,13 @@
-import { ContentItem, DeliveryClient, SortOrder, MultipleItemQuery } from 'kentico-cloud-delivery';
+import {
+  ContentItem,
+  DeliveryClient,
+  SortOrder,
+  MultipleItemQuery,
+  TaxonomyGroup,
+  TaxonomyTerms,
+} from 'kentico-cloud-delivery';
 import { useContext, useEffect, useState, useRef } from 'react';
-import { shallowEqualObjects } from 'shallow-equal';
+import deepEqual from 'deep-equal';
 
 import { BlogContext } from './BlogProvider';
 
@@ -30,7 +37,7 @@ interface FilterComplex {
 }
 
 type Filter = FilterComplex | string;
-interface Filters {
+export interface Filters {
   [k: string]: Filter;
 }
 
@@ -71,7 +78,7 @@ export function useList<T extends ContentItem>(model: string, options: ListOptio
   const filter = useRef<Filters>();
 
   useEffect(() => {
-    if (options.filter && shallowEqualObjects(filter.current, options.filter)) {
+    if (options.filter && deepEqual(filter.current, options.filter)) {
       /* istanbul ignore next: FIXME - no easy way to test with current hook testing helper :( */
       return;
     }
@@ -159,4 +166,42 @@ export function useSingle<T extends ContentItem>(
   }, [model, key]);
 
   return item;
+}
+
+export function useTaxonomies() {
+  const client = useKentico();
+  const [list, setList] = useState<TaxonomyGroup[]>([]);
+
+  useEffect(() => {
+    const request = client.taxonomies();
+
+    const subscription = request.getObservable().subscribe(
+      /* istanbul ignore next: would test React and/or RxJS */
+      res => setList(res.taxonomies)
+    );
+
+    /* istanbul ignore next: would test React */
+    return () => subscription.unsubscribe();
+  }, []);
+
+  return list;
+}
+
+export function useTaxonomy(codename: string) {
+  const client = useKentico();
+  const [list, setList] = useState<TaxonomyTerms[]>([]);
+
+  useEffect(() => {
+    const request = client.taxonomy(codename);
+
+    const subscription = request.getObservable().subscribe(
+      /* istanbul ignore next: would test React and/or RxJS */
+      res => setList(res.taxonomy.terms)
+    );
+
+    /* istanbul ignore next: would test React */
+    return () => subscription.unsubscribe();
+  }, [codename]);
+
+  return list;
 }

@@ -8,7 +8,8 @@
     "quotemark": [true, "single", "jsx-double"],
     "arrow-parens": [true, "ban-single-arg-parens"],
     "no-implicit-dependencies": [true, "dev", ["react-kentico-blog"]],
-    "trailing-comma": [false]
+    "trailing-comma": [false],
+    "ordered-imports": false
   },
   "rulesDirectory": [],
   "exclude": ["node_modules"]
